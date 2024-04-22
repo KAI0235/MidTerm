@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {        
+        animator = (GetComponent<Animator>());  
+        rb = GetComponent<Rigidbody>();
         // 문제 1) 위에 주어진 animator, rb 변수를 이용해 Component를 받아오는 명령어를 작성하세요.
         // (Component당 5점, 합계 5*2=10점, 부분점수 있음)
 
@@ -48,10 +50,11 @@ public class PlayerMovement : MonoBehaviour
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);        
 
-        bool isWalking = false;
+        bool isWalking = true;
 
         // 문제 4) isWalking 변수를 Animator의 IsWalking 파라미터에 적용하세요. (10점)
 
+        isWalking = hasHorizontalInput && hasVerticalInput;
 
         // 문제 5) 원하는 방향으로 이동할 수 있는 Vector3값을 만드는 명령줄을 Vector3.zero를 지우고 완성해 주세요. (10점)
         Vector3 desiredFoward = Vector3.zero;
